@@ -1,0 +1,41 @@
+{include file = "header.html"}
+
+<div class="body">
+  <div class = "main">
+  
+  {if isset($test_arr)}
+    <ul>
+    {foreach $test_arr as $test}
+      <li>{$test}</li>
+    {/foreach}
+    </ul>
+  {/if}
+
+<br />
+<form method = "post" action = "../views/login.php">
+  <div class = "line spaced">
+    <label for = "userName" class = "unit size1of5">Name</label>
+    {if strlen($user_name_repeated) > 0}
+      <input type = "text" name = "userName" value = "{$user_name_repeated}" id = "userName" size = "20" class = "lastUnit" />
+    {else}
+      <input type = "text" name = "userName" id  = "userName" size = "20" class = "lastUnit" />
+    {/if} 
+  </div>
+  
+  
+  <div class = "line spaced">
+    <label for = "uPassword" class = "unit size1of5">Password</label>
+    <div class = "lastUnit">
+      <input type = "password" name = "uPassword" id = "uPassword" size = "20" class = "lastUnit" />
+    </div> 
+  </div>
+  
+  <div class = "line spaced">
+    <input type = "submit" value = "Enter" name = "enterBtn" />
+  </div>
+</form>
+
+</div> <!-- End of OOCSS main -->
+</div> <!-- End of OOCSS body -->
+
+{include file = "footer.html"}

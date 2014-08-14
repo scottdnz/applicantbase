@@ -1,0 +1,286 @@
+{include file = "header.html"}
+
+<div class="body">
+  <div class = "main">
+  
+  {if isset($test_arr)}
+    <ul>
+    {foreach $test_arr as $test}
+      <li>{$test}</li>
+    {/foreach}
+    </ul>
+  {/if}
+  <br />
+  <div class = "line" id = "createAppOptions">
+    <div class = "unit size1of5 appOption">Step 1</div>
+    <div class = "unit size1of5 appOption">Step 2</div>
+    <div class = "unit size1of5 appOption">Edit Narrative</div>
+    <div class = "unit size1of5 appOption">Attached Files</div>
+  </div>
+  <br /><br />
+  
+  <div id = "errorsArea"></div>
+  <div id = "confArea"></div>
+  
+  <div id = "step1">
+	
+    <div class = "line spaced">
+		  <label for = "firstName" class = "unit size1of5">First Name (s)</label>
+		  <div class = "unit size1of40"><br /></div>
+		  <input type = "text" name = "firstName" id = "firstName" />
+	  </div>
+	  
+	  <div class = "line spaced">
+		  <label for = "surname" class = "unit size1of5">Surname</label>
+		  <div class = "unit size1of40"><br /></div>
+		  <input type = "text" name = "surname" id = "surname" />
+	  </div>
+	  <br />
+	   <div class = "line spaced">
+       <label for = "phoneHome" class = "unit size1of5">Phone (home)</label>
+	      <div class = "unit size1of40"><br /></div>
+	      <input type = "text" name = "phoneHome" id = "phoneHome" />
+      </div>
+    
+    <div class = "line spaced">
+      <label for = "phoneWork" class = "unit size1of5">Phone (work)</label>
+      <div class = "unit size1of40"><br /></div>
+      <input type = "text" name = "phoneWork" id = "phoneWork" />
+    </div>
+    
+    <div class = "line spaced">
+      <label for = "phoneMobile" class = "unit size1of5">Phone (mobile)</label>
+      <div class = "unit size1of40"><br /></div>
+      <input type = "text" name = "phoneMobile" id = "phoneMobile" />
+    </div>
+    <br />
+    <div class = "line spaced">
+      <label for = "emailHome" class = "unit size1of5">Email (home)</label>
+      <div class = "unit size1of40"><br /></div>
+        <input type = "text" name = "emailHome" id = "emailHome" />
+      </div>
+    
+    <div class = "line spaced">
+      <label for = "emailWork" class = "unit size1of5">Email (work)</label>
+      <div class = "unit size1of40"><br /></div>
+        <input type = "text" name = "emailWork" id = "emailWork" />
+      </div>
+      
+  <br />
+	  
+  <div class = "line spaced">
+	  <div class = "unit size1of5">
+	    Position Applied For?
+	  </div>
+	  <div class = "unit size1of40"><br /></div>
+	  {foreach $applied_for as $row}
+		  <label for = "{$row['id']}" >{$row['applied_for']|capitalize:true}</label>
+		  {if $row['deflt'] == 1}
+		    <input type = "radio" name = "positionApp" value = "{$row['id']}" id = "{$row['id']}" checked = "checked" />
+		  {else}
+		    <input type = "radio" name = "positionApp" value = "{$row['id']}" id = "{$row['id']}" />
+		  {/if}
+	  {/foreach}
+	</div>
+    
+    <div class = "line spaced hidden" id = "linePositionLink">
+      <label for = "positionLink" class = "unit size1of5">Position</label>
+       <div class = "unit size1of40"><br /></div>
+      <select name = "positionLink" id = "positionLink" size = "5">
+        {foreach $position as $row}
+        <option value = "{$row['id']}">{$row['title']}</option>
+        {/foreach}
+      </select>
+    </div>
+    
+         <div class = "line spaced">
+      <label for = "applicationSrc" class = "unit size1of5">Application Source</label>
+      <div class = "unit size1of40"><br /></div>
+      <select name = "applicationSrc" id = "applicationSrc">
+        <option value = "">None</option>
+        {foreach $application_source as $row}
+          {if $row['deflt'] == 1}
+          <option value = "{$row['id']}" selected = "selected">{$row['source']}</option>
+          {else}
+          <option value = "{$row['id']}">{$row['source']}</option>
+          {/if}
+        {/foreach}
+      </select>
+    </div> 
+    
+    <div class = "line spaced">
+      <label for = "applicationDate"  class = "unit size1of5">Application Date</label>
+      <div class = "unit size1of40"><br /></div>
+      <input type = "text" name = "applicationDate" id = "applicationDate" size = "10" />
+    </div>
+	  
+  <br />
+  <input type = "button" name = "btnSaveStep1" id = "btnSaveStep1" value = "Save" />
+    
+  </div><!--  End of Step 1 -->
+  
+  
+  <div id = "step2">
+  
+    <div class = "line spaced">
+      <label for = "statusShortlisting" class = "unit size1of5">Status at Shortlisting Stage</label>
+      <div class = "unit size1of40"><br /></div>
+      <select name = "statusShortlisting" id = "statusShortlisting">
+        <option value = "NDY">Not decided yet</option>
+        {foreach $status_shortlisting as $row}
+        {if $row['deflt'] == 1}
+          <option value = "{$row['id']}" selected = "selected">{$row['status']}</option>
+          {else}
+          <option value = "{$row['id']}">{$row['status']}</option>
+          {/if}
+        {/foreach}
+      </select>
+    </div>
+    
+    <div class = "line spaced hidden" id = "shortlistRejectSent">
+      <div class = "unit size1of5">
+        Notification sent
+      </div>
+      <div class = "unit size1of40"><br /></div>
+      {foreach $reject_notification_sent as $row}
+        <label for = "rejectSent{$row['id']}">{$row['sent']|capitalize:true}</label>
+        {if $row['deflt'] == 1}
+          <input type = "radio" name = "slRejectSent" id = "{$row['id']}" checked = "checked" />
+        {else}
+          <input type = "radio" name = "slRejectSent" id = "{$row['id']}" />
+        {/if}
+      {/foreach}
+    </div>
+    
+    <div class = "line spaced hidden" id = "lineScreening">
+      <label for = "statusScreening" class = "unit size1of5">Status at Screening Stage</label>
+      <div class = "unit size1of40"><br /></div>
+      <select name = "statusScreening" id = "statusScreening">
+        <option value = "NDY">Not decided yet</option>
+        {foreach $status_screening as $row}
+        {if $row['deflt'] == 1}
+          <option value = "{$row['id']}" selected = "selected">{$row['status']}</option>
+          {else}
+          <option value = "{$row['id']}">{$row['status']}</option>
+          {/if}
+        {/foreach}
+      </select>
+    </div>
+    
+    <div class = "line spaced hidden" id = "screeningRejectSent">
+      <div class = "unit size1of5">
+        Notification sent
+      </div>
+      <div class = "unit size1of40"><br /></div>
+      {foreach $reject_notification_sent as $row}
+        <label for = "rejectSent{$row['id']}">{$row['sent']|capitalize:true}</label>
+        {if $row['deflt'] == 1}
+          <input type = "radio" name = "scrRejectSent" id = "{$row['id']}" checked = "checked" />
+        {else}
+          <input type = "radio" name = "scrRejectSent" id = "{$row['id']}" />
+        {/if}
+      {/foreach}
+    </div>
+    
+    <div class = "line spaced hidden" id = "lineIntDate">
+      <label for = "interviewDate" class = "unit size1of5">Interview Date</label>
+      <div class = "unit size1of40"><br /></div>
+      <input type = "text" name = "interviewDate" id = "interviewDate" size = "10" />
+    </div>
+    
+    <div class = "line spaced hidden" id = "lineIntNotes">
+      <label for = "notes" class = "unit size1of5">Interview notes</label>
+      <div class = "unit size1of40"><br /></div>
+      <textarea id = "notes" name = "notes" rows = "4" cols = "60"></textarea>
+    </div>
+    
+        <div class = "line spaced hidden" id = "lineAfterInt">
+      <label for = "statusInterview" class = "unit size1of5">Status after Interview</label>
+      <div class = "unit size1of40"><br /></div>
+      <select name = "statusInterview" id = "statusInterview">
+        <option value = "NDY">Not decided yet</option>
+        {foreach $status_interview as $row}
+        {if $row['deflt'] == 1}
+          <option value = "{$row['id']}" selected = "selected">{$row['status']}</option>
+          {else}
+          <option value = "{$row['id']}">{$row['status']}</option>
+          {/if}
+        {/foreach}
+      </select>
+    </div>
+    
+     <div class = "line spaced hidden" id = "interviewRejectSent">
+      <div class = "unit size1of5">
+        Notification sent
+      </div>
+      <div class = "unit size1of40"><br /></div>
+      {foreach $reject_notification_sent as $row}
+        <label for = "rejectSent{$row['id']}">{$row['sent']|capitalize:true}</label>
+        {if $row['deflt'] == 1}
+          <input type = "radio" name = "intRejectSent" id = "{$row['id']}" checked = "checked" />
+        {else}
+          <input type = "radio" name = "intRejectSent" id = "{$row['id']}" />
+        {/if}
+      {/foreach}
+    </div>
+    
+    <div class = "line spaced hidden" id = "lineFlagFuture">
+      <label for = "flagFuture" class = "unit size1of5">
+      Flag as a candidate to follow up if a role suiting their skill set comes up in future
+      </label>
+      <div class = "unit size1of40"><br /></div>
+        {foreach $flag_future as $row}
+         <label for = "flagFuture">{$row['flag']|capitalize:true}</label>
+        {if $row['deflt'] == 1}
+          <input type = "radio" name = "flagFuture" value = "{$row['id']}" checked = "checked" />
+        {else}
+          <input type = "radio" name = "flagFuture" value = "{$row['id']}" />
+        {/if}
+        {/foreach}
+    </div>
+    
+  </form>
+  
+    <br />
+    <input type = "button" name = "btnSaveStep2" id = "btnSaveStep2" value = "Save" />
+  
+  </div><!--  End of Step 1 -->
+  
+  
+  <div id = "editNarrative">  
+  <form id = "narrativeForm">
+    
+  <div class = "line spaced" id = "narrativeArea">
+	  <textarea class="uEditor">
+	  </textarea>
+  </div>
+	</form>
+  
+  <br />
+  <input type = "button" name = "btnSaveNarrative" id = "btnSaveNarrative" value = "Save" />
+  </div>
+  
+  <div id = "attachedFiles">
+    <form id = "attachFileForm" action = "../views/process_upload_file.php" method = "post" enctype = "multipart/form-data">
+      <div class = "line spaced">
+        <label for = "attachFile" class = "unit size1of5">Attach a file</label>
+        <div class = "unit size1of40"><br /></div>
+        <input type = "hidden"  name = "MAX_FILE_SIZE" value = "4096000" />
+        <input type = "file" name = "attachFile" id = "attachFile" />
+      </div>
+    </form>
+    
+    <!-- Values from db query, also filled by AJAX after an upload in previous field -->
+    <div class = "line spaced" id = "attachedFilesPO">
+    <label for = "attachFile" class = "unit size1of5">Attached files</label>
+      <div class = "unit size1of40"><br /></div>
+      <ul id = "attachedFilesList">
+        <li>None</li>
+      </ul>
+    </div>
+  </div>
+	
+  </div> <!-- End of OOCSS main -->
+</div> <!-- End of OOCSS body -->
+
+{include file = "footer.html"}

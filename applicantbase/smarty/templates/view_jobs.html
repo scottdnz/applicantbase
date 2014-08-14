@@ -1,0 +1,77 @@
+{include file = "header.html"}
+
+<br />
+
+<div class="line" id="filterRow">
+    <div class="line bolded">Search filters
+</div>
+  <div class="unit size1of5">
+    <label for="start">Start: </label>
+    <select id="start">
+        {foreach from=$start_opts key=k item=v}
+          {if $k == $defaults["start"]}
+            <option value="{$v}" selected="selected">{$k}</option>
+          {else}
+            <option value="{$v}">{$k}</option>
+          {/if}
+        {/foreach}
+    </select>
+  </div>
+  <div class="unit size1of5">
+    <label for="end">End: </label>
+    <select id="end">
+      {foreach from=$end_opts key=k item=v}
+        {if $k == $defaults["end"]}
+          <option value="{$v}" selected="selected">{$k}</option>
+        {else}
+          <option value="{$v}">{$k}</option>
+        {/if}
+      {/foreach}
+    </select>
+  </div>
+  <div class="unit size1of5">
+    <label for="filled">Filled: </label>
+    <select id="filled">
+      {foreach from=$filled_opts key=k item=v}
+        {if $k == $defaults["filled"]}
+          <option value="{$v}" selected="selected">{$k}</option>
+        {else}
+          <option value="{$v}">{$k}</option>
+        {/if}
+      {/foreach}
+    </select>
+  </div>
+  
+  <div class="lastUnit">
+    <button id="btnSearchJobs">Search</button>
+  </div>
+</div>
+
+<br />
+ 
+<table>
+  <tr>
+    <th>Title</th><th>Filled</th><th>Date Advertised</th><th>Date Filled</th><th>Successful Applicant</th>
+  </tr>
+  <tbody id="tblViewJobs">
+  {foreach $jobs_rows as $row}
+  <tr>
+    <td data-jid='{$row["id"]}' class = "jobId blueLink">{$row["title"]|capitalize:true}</td>
+    {if $row["filled"] == "0"}
+      <td><img src='../static/img/no.png' /></td>
+    {else}
+      <td><img src='../static/img/yes.png' /></td>
+    {/if}
+    <td>{$row["date_started"]}</td>
+    <td>{$row["date_filled"]}</td>
+    {if isset($row["applicant_filled_by_id"])}
+      <td data-applicantid='{$row["applicant_filled_by_id"]}' class="applicantId blueLink">{$row["applicant_name"]}</td>
+    {else}
+      <td></td>
+    {/if}
+  </tr>
+  {/foreach}
+  </tbody>
+</table>
+
+{include file = "footer.html"}

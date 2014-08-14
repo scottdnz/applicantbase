@@ -1,0 +1,39 @@
+Recruitment db
+
+First Name	
+Surname	
+Postion Applied for	- Yes/No
+Application Source - Seek, Trade Me, Referal, Other on line Source	
+Application Date	
+Status at Shortlisting Stage - Reject, Telephone Interview
+If rejected, notification Sent	
+Status at screening stage	- Reject, Invite to Interview
+Interview Date	
+Status after interview - Reject, Offer
+If reject, notification sent	
+Notes	
+Flag as a candidate to follow up if a role suiting their skill set comes up in future	
+Attachments - will go through AJAX individually. Not manual submit
+Narrative field
+
+-attach CV in Word of PDF format
+-also scanned copies of interview notes & technical challenges
+-all attachments purged after 12 months
+
+
+firstName - text
+surname - text
+positionApp - text (Y/N currently)
+applicationSrc - text in table
+applicationDate - date
+statusShortlisting - text in table
+slRejectSent - text (Y/N currently)
+statusScreening - text in table
+interviewDate - date
+statusInterview - text in table
+interviewRejectSent - text (Y/N currently)
+notes - long text
+flagFuture - text (Y/N currently)
+attachFile - text (filepaths) in table
+narrative - long text
+

@@ -1,0 +1,61 @@
+Applicantbase help
+
+* 17/3/2012
+Local testing (at home):
+added these lines to: /etc/apache2/sites-enabled/000-default
+
+<VirtualHost appbase.com>
+  ServerAdmin webmaster@localhost
+ServerName appbase.com
+   ServerAlias appbase.com
+  DocumentRoot /home/scott/ws/php/php_test/applicantbase
+DirectoryIndex index.php
+  ErrorLog /var/log/apache2/error.log
+  LogLevel warn
+  CustomLog /var/log/apache2/access.log combined
+NameVirtualHost appbase.com
+<Directory "/home/scott/ws/php/php_test/applicantbase">
+       Options Indexes MultiViews FollowSymLinks
+       AllowOverride All
+       Order allow,deny
+       Allow from all
+</Directory>
+</VirtualHost>
+
+Browse to:
+http://appbase.com/views/login.php
+
+
+Set up MySQL database:
+mysql -u root -p
+...
+create database appbase;
+grant all on appbase.* to appbaseuser@"localhost" identified by "s2redRac";
+
+
+To create database tables:
+php /lib/init_db.php
+To populate with defaults: 
+php /lib/init_populate_tables.php
+
+$ php -a
+Interactive mode enabled
+<?php echo "hi!"; ?>
+Press Ctrl+D
+
+Progress 29/10/2011:
+-Added deflt field to CSV file, init scripts and form tables
+using file "~/ws/backups/entry_tpl.txt" to gradually write db queries & fill
+up view/app_details_entry.php and app_details_entry.html page
+
+select id, title, date_started, date_filled, ad_source, applicant_filled_by_id from job;
+
+
+Old set up:
+Copy files from local /home to local web server:
+src=/home/scott/ws/applicantbase/*;
+dest=/var/www/php/applicantbase/;
+cp -r $src $dest
+
+Browse to:
+http://localhost/php/applicantbase/views/index.php

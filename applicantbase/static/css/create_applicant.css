@@ -1,0 +1,17 @@
+/* CSS Doc */
+
+ul {
+  list-style-type: none;
+  margin-top: 0px;	
+}
+
+.fieldsetBdr {
+  width: 50%;
+}
+
+#createAppOptions {
+  color: blue;
+  font-weight: bold;
+}
+
+

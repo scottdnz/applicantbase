@@ -1,0 +1,9 @@
+*17/3/2012:
+-Moved most PHP files left margins.
+-Got Create Job and View Jobs pages working.
+-Started work on posting to Create Applicant page.
+
+*2/6/2012:
+In views/create_applicant_process.php:
+	 up to save_step1 f'n
+	 -need to work out rel's between tables & sql inserts

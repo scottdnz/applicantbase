@@ -1,0 +1,27 @@
+{include file = "header.html"}
+
+<div class="body">
+  <div class = "main">
+  
+  {if isset($test_arr)}
+    <ul>
+    {foreach $test_arr as $test}
+      <li>{$test}</li>
+    {/foreach}
+    </ul>
+  {/if}
+
+<br />
+
+<div class = "line confirmationMsg">
+  You have successfully logged out.
+  <br />
+  <br />
+  <a href = "../views/login.php">Click here to login</a>
+</div>
+
+
+</div> <!-- End of OOCSS main -->
+</div> <!-- End of OOCSS body -->
+
+{include file = "footer.html"}

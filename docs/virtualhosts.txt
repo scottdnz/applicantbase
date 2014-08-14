@@ -1,0 +1,105 @@
+Virtualhosts - Ubuntu 11.10
+
+sudo -i
+cd /etc/apache2/sites-available
+
+ls
+Output:
+default  default-ssl
+
+Copy the ‘default’ config to a site specific config.
+cp default appbase.scott.com.conf
+
+Find the application directory
+/home/scott/ws/php/php_test/applicantbase/applicantbase
+
+Open the file
+vim appbase.scott.com.conf
+
+Add the name of the server. This will be the name that you type in the URL field of your web browser
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName appbase.scott.com
+
+    
+Point the Virtual host to the correct directory
+    DocumentRoot /home/scott/ws/php/php_test/applicantbase/applicantbase/
+    <Directory />
+            Options FollowSymLinks
+            AllowOverride None
+    </Directory>
+
+
+Also make the change here.
+        <Directory /home/scott/ws/php/php_test/applicantbase/applicantbase/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+
+Make a symbolic link in the sites-enabled directory
+ln -s /etc/apache2/sites-available/appbase.scott.com.conf /etc/apache2/sites-enabled/appbase.com.conf
+
+vim /etc/hosts
+127.0.0.1	localhost
+127.0.0.1	appbase.scott.com
+
+
+/etc/init.d/apache2 restart
+
+Browse to:
+http://appbase.scott.com
+redirects to:
+http://appbase.scott.com/views/login.php
+
+
+
+
+
+
+Example of sites-available conf file (works!):
+
+cat /etc/apache2/sites-available/appbase.com.conf 
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	ServerName appbase.scott.com
+	DocumentRoot /home/scott/ws/php/php_test/applicantbase/applicantbase
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /home/scott/ws/php/php_test/applicantbase/applicantbase/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+</VirtualHost>

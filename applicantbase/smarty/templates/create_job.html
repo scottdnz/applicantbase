@@ -1,0 +1,83 @@
+{include file = "header.html"}
+
+<br />
+
+<div id = "confirmationArea">
+</div>
+<form action = "../views/create_job.php" method = "post">
+  <div class = "line spaced">
+    <label for = "jobTitle" class = "unit size1of5">Job Title</label>
+    <div class = "unit size1of40"><br /></div>
+    <input type = "text" name = "jobTitle" id = "jobTitle" size = "40" />
+  </div>
+  
+  <div class = "line spaced">
+    <label for = "dateStarted" class = "unit size1of5">Date Vacancy Opened</label>
+    <div class = "unit size1of40"><br /></div>
+    <input type = "text" name = "dateStarted" id = "dateStarted" size = "10" />
+  </div>
+  
+  <div class = "line spaced">
+    <label for = "description" class = "unit size1of5" id = "descriptionHdr">Description</label>
+    <br />
+    <div class = "unit size1of40"><br /></div>
+    <div id = "descriptionArea" class = "resultArea">
+	    <textarea name = "description" id = "description" class = "uEditor">
+	    </textarea>
+    </div>
+  </div>
+  
+  <div class = "line spaced">
+    <label for = "adSource" class = "unit size1of5">Advertised in</label>
+    <div class = "unit size1of40"><br /></div>
+    <input type = "text" name = "adSource" id = "adSource" />
+  </div>
+  
+  <div class = "line spaced">
+    <label for = "filled" class = "unit size1of5">Filled</label>
+    <div class = "unit size1of40"><br /></div>
+    <label>No</label>
+    <input type = "radio" name = "filled" value = "0" />
+    <label>Yes</label>
+    <input type = "radio" name = "filled" value = "1" />
+  </div>
+  
+  <div id = "dateFilledArea" class = "hidden">
+   
+	   <div class = "line spaced">
+	    <label for = "appFilledBy" class = "unit size1of5">Applicant Filled By</label>
+	    <div class = "unit size1of40"><br /></div>
+	    <select name = "appFilledBy" id = "appFilledBy" disabled = "disabled">
+	      <option value = "0" selected = "selected">Not decided yet</option>
+	      {foreach $applicants_list as $row}
+	        <option value = "{$row['id']}">{$row['first_name']} {$row['surname']}</option>
+	      {/foreach}
+	    </select>
+	  </div>
+  
+	   <div class = "line spaced">
+	    <label for = "dateFilled" class = "unit size1of5">Date Vacancy Filled</label>
+	    <div class = "unit size1of40"><br /></div>
+	    <input type = "text" name = "dateFilled" id = "dateFilled" size = "10" disabled = "disabled" />
+	  </div>
+  
+  </div>  <!-- End of dateFilledArea -->
+  
+  <div class = "line spaced">
+    <label class = "unit size1of5">Finish</label>
+    <div class = "unit size1of40"><br /></div>
+    <input type = "button" name = "jobsListSubmitBtn" id = "jobsListSubmitBtn" value = "Save" />
+    <input type = "reset" class = "resetBtn" />
+  </div>
+  
+</form>
+
+<!-- 
+title – text
+description – long text
+ad_source – text
+filled – y/n
+applicant_filled_by_id – int
+ -->
+
+{include file = "footer.html"}

@@ -1,0 +1,17 @@
+<label for = ""></label>
+<input type = "" name = "" id = "" />
+
+<label for = ""></label>
+<select name = "" id = "">
+  {foreach as }
+  <option value = ""></option>
+  {/foreach}
+</select>
+
+<label for = ""></label>
+<textarea id = "" name = "" rows = "" cols = ""></textarea>
+
+<label for = "Yes">Yes</label>
+<input type = "radio" name = "Yes" id = "Yes" />
+<label for = "No">No</label>
+<input type = "radio" name = "No" id = "No" />

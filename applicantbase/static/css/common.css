@@ -1,0 +1,171 @@
+/* CSS Doc */
+
+/* Header Menu Settings */
+#topBanner {
+	font-size: 250%;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 6px;
+}
+
+#mainMenu,
+#mainMenu ul {
+    list-style: none;
+}
+#mainMenu {
+    float: left;
+}
+#mainMenu > li {
+    float: left;
+}
+#mainMenu li a {
+	display: block;
+    height: 2em;
+    line-height: 2em;
+    padding: 0 1.5em;
+    text-decoration: none;
+}
+#mainMenu ul {
+    position: absolute;
+    display: none;
+	z-index: 999;
+}
+#mainMenu ul li a {
+    width: 120px;
+}
+
+/* Main menu
+------------------------------------------*/
+#mainMenu {
+    font-family: Arial;
+    font-size: 12px;
+    background: #2f8be8;
+}
+#mainMenu > li > a {
+    color: #fff;
+    font-weight: bold;
+}
+#mainMenu > li:hover > a {
+    background: #f09d28;
+    color: #000;
+}
+ 
+/* Submenu
+------------------------------------------*/
+#mainMenu ul {
+    background: #f09d28;
+    -webkit-padding-start: 0px
+}
+#mainMenu ul li a {
+    color: #000;
+}
+#mainMenu ul li:hover a {
+    background: #ffc97c;
+}
+
+#mainMenu li:hover ul.noJS {
+    display: block;
+}
+
+#mainMenu ul, #mainMenu ul li, #mainMenu ul li ul, #mainMenu ul li ul li {
+  padding-right: 10px;
+  padding-left: 0px;
+}
+
+
+
+
+/* End of Header Menu Settings */
+
+/* Datepicker widget settings */
+th, .bolded {
+  font-weight: bold;
+}
+
+td, th {
+  text-align: center;
+  border: 1px solid black;
+  padding: 4px 2px;  
+}
+
+th {
+  color: #fff;
+  background-color: #06266f;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* End of datepicker settings */
+
+
+.spaced {
+  margin-bottom: 13px;	
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.hidden {
+	display: none;
+}
+
+.hdr {
+	text-align: center;
+	border-right: 1px solid #ccc;
+}
+
+.hdr a {
+  text-decoration: none;
+  color: #000;
+}
+
+.hdr a:hover {
+	color: #000;
+	font-weight: bold;
+}
+
+.hdr a:visited {
+  color: #000;
+}
+
+.fieldsetBdr {
+  border: 1px solid #ccc;
+}
+
+.fieldsetBdrNone {
+  border: none;
+}
+
+.rAlign {
+	text-align: right;
+}
+
+h3 {
+	font-size: 150%;
+	font-weight: bold;
+}
+
+#errorMsg {
+	color: red;
+}
+
+.lAlign {
+  text-align: left;
+}
+
+.rAlign {
+  text-align: right;
+}
+
+.blueLink {
+  color: blue;
+}
+
+.blueLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{$title}</title>
+    <link rel = "stylesheet" type = "text/css" href = "{$static_path}/css/oocss/reset.css" />
+    <link rel = "stylesheet" type = "text/css" href = "{$static_path}/css/oocss/grids.css" />
+    <link rel = "stylesheet" type = "text/css" href = "{$static_path}/css/oocss/template.css" />
+    {foreach $extra_css as $css}
+      <link rel = "stylesheet" type = "text/css" href = "{$static_path}/{$css}" />
+    {/foreach}
+    
+    <script type = "text/javascript">
+    $SCRIPT_ROOT = "{substr($static_path, 0, -7)}";
+    </script>
+    {foreach $extra_js as $js}
+      <script type = "text/javascript" src = "{$static_path}/{$js}"></script>
+    {/foreach}
+    
+  </head>
+  
+  <body>
+  
+	  <div class = "page">
+	      <div class="head">
+	       <div id = "topBanner">
+	         Applicant Base
+	       </div>
+	        {if $show_head_menu > 0}
+	        <div class = "line rAlign">
+               <a href = "../views/logout.php">Log Out</a>
+            </div>
+             
+            <nav>
+              <ul id = "mainMenu">
+                <li><a href="#">Jobs</a>
+                  <ul class = "noJS">
+                    <li><a href="../views/create_job.php">Create Job</a></li>
+                    <li><a href="../views/view_jobs.php">View Jobs</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Applicants</a>
+                  <ul class = "noJS">
+                    <li><a href="../views/create_applicant.php">Create Applicant</a></li>
+                    <li><a href="../views/view_applicants.php">View Applicants</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+
+	          <br /><br />
+	        {/if}
+	      </div> 
+	      <!-- End of OOCSS head -->
+       
+         
+  <ul id = "testArea">
+  {if isset($test_arr)}
+	  {foreach $test_arr as $t_item}
+	    <li>{$t_item}</li>
+	  {/foreach}
+	{/if}
+  </ul>
+
+<h3>{$title}</h3>
+
+ <ul id = "errorMsg">
+        {if count($error_arr) > 0}
+         {foreach $error_arr as $err}
+           {if count($err) > 0}
+             {foreach $err as $err_item}
+               <li>Error: {$err_item}</li>
+             {/foreach}
+           {else}
+           <li>Error: {$err}</li>
+           {/if}
+         {/foreach}
+        {/if}
+         </ul>

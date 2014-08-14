@@ -1,0 +1,35 @@
+{include file = "header.html"}
+
+<br />
+<table>
+  <tr>
+    <th>Surname</th>
+    <th>First Name</th>
+    <th>Applicant ID</th>
+    <th>Applied for Job</th>
+    <th>Job Title</th>
+    <th>Job ID</th>
+    <th>Application ID</th>
+    <th>Flagged for Future</th>
+  </tr>
+  {foreach $applicants_rows as $row}
+  <!--  
+  <p>***</p>
+    {foreach $row as $key => $obj}
+        <p>{$key}: {$obj}</p>
+    {/foreach}
+   --> 
+  <tr>
+    <td>{$row["surname"]}</td>
+    <td>{$row["first_name"]}</td>
+    <td>{$row["apct_id"]}</td>
+    <td>{$row["position_applied_for_id"]}</td>
+    <td>{$row["title"]}</td>
+    <td>{$row["job_id"]}</td>
+    <td>{$row["apn_id"]}</td>
+    <td>{$row["flag_future_id"]}</td>
+  </tr>
+  {/foreach}
+</table>
+
+{include file = "footer.html"}
