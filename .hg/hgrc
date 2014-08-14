@@ -1,2 +1,0 @@
-[paths]
-default = ssh://scott@scottd.dnserver.net.nz//var/lib/hg_repos/applicantbase
