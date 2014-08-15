@@ -17,7 +17,7 @@ function get_connection() {
   $result = "";
   /* Get database connection. If there is a connection problem, exit.
    * Syntax: mysqli(host, user, password, db) */ 
-  $conn = new mysqli("localhost", "appbaseuser", "s2redRac", "appbase"); 
+  $conn = new mysqli("localhost", "appbaseuser", "thisIsWayTooSecret", "appbase"); 
   if (mysqli_connect_errno()) {
     $result .= "Problem connecting: " . mysqli_connect_error();
     $conn = ""; 

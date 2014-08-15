@@ -30,7 +30,7 @@ Set up MySQL database:
 mysql -u root -p
 ...
 create database appbase;
-grant all on appbase.* to appbaseuser@"localhost" identified by "s2redRac";
+grant all on appbase.* to appbaseuser@"localhost" identified by "hahaSecret";
 
 
 To create database tables:
